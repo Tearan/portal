@@ -5,22 +5,25 @@ import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
+@ComponentScan({"com.example.demo.*"})
 @SpringBootApplication
 @EnableSpringDataWebSupport
 public class PortalApplication {
 
+	@Autowired
+	private Environment env;
+
 	public static void main(String[] args) {
 		SpringApplication.run(PortalApplication.class, args);
 	}
-
-	@Autowired
-	private Environment env;
 
 	@Bean
 	public DataSource dataSource() {
