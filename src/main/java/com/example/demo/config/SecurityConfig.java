@@ -53,23 +53,4 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     }
 
-    private void hackSetCustomAuthenticationEntryPoint(FormLoginConfigurer<HttpSecurity> configurer) {
-        LoginUrlAuthenticationEntryPoint adapter = new LoginUrlAuthenticationEntryPoint("/login") {
-
-            @Override
-            public void commence(HttpServletRequest request, HttpServletResponse response,
-                                 AuthenticationException authException) throws IOException, ServletException {
-                if (request.getHeader("Accept") != null && request.getHeader("Accept").contains("application/json")) {
-                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                } else {
-                    super.commence(request, response, authException);
-                }
-            }
-
-        };
-
-        Field field = ReflectionUtils.findField(configurer.getClass(), "authenticationEntryPoint");
-        field.setAccessible(true);
-        ReflectionUtils.setField(field, configurer, adapter);
-    }
 }

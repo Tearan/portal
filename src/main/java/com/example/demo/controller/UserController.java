@@ -13,16 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 
-    @RequestMapping(value = "/user**", method = RequestMethod.GET)
-
-    public String showUser(ModelMap model){
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public User showUser(ModelMap model){
         User user = new User();
         
-        return "hello";
+        return user;
 
     }
 
-    @RequestMapping(value = "/admin**",  method = RequestMethod.GET)
+    @RequestMapping(value = "/admin",  method = RequestMethod.GET)
     public String showAdmin(ModelMap model){
         User user = new User();
 
