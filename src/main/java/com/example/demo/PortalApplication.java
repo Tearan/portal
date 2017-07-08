@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
-@ComponentScan({"com.example.demo.*"})
+@ComponentScan({"com.example.demo"})
 @SpringBootApplication
 @EnableSpringDataWebSupport
 public class PortalApplication {

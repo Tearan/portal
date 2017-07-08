@@ -3,13 +3,16 @@
  */
 'use.strict'
 
-App.config(function ($routeProvider) {
-    $routeProvider.when("/users/:id", {
-        controller: 'UserController',
-        templateUrl: '/templates/user/show.html'
-    }).when("/users", {
+angular.module('myApp')
+    .config(["$locationProvider","$routeProvider",function ($locationProvider,$routeProvider) {
+    $routeProvider
+        .when("/users", {
         controller: 'UsersController',
-        templateUrl: '/js/user/show.html'
-    });
+        templateUrl: './js/users/show.html'})
+        .otherwise("/");
 
-})
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
+}]);

@@ -26,9 +26,7 @@ public class User {
 
     private Status status;
 
-    private String firstName;
-
-    private String lastName;
+    private String name;
 
     @Column(unique = true, nullable = false)
     private String email;

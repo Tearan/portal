@@ -1,6 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.rest;
 
 import com.example.demo.bean.User;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,18 +15,10 @@ public class UserController {
 
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public User showUser(ModelMap model){
+    public ResponseEntity<User> showUser(ModelMap model){
         User user = new User();
-        
-        return user;
-
-    }
-
-    @RequestMapping(value = "/admin",  method = RequestMethod.GET)
-    public String showAdmin(ModelMap model){
-        User user = new User();
-
-        return "hello admin";
+        user.setName("ALA");
+        return ResponseEntity.ok(user);
 
     }
 }
