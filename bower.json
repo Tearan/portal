@@ -1,0 +1,24 @@
+{
+  "name": "portal",
+  "homepage": "https://github.com/martaswiatkowska/portal",
+  "authors": [
+    "GrumpyOwl <martaswiatkowska8@gmail.com>"
+  ],
+  "description": "...",
+  "main": "PortalApplication",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.5",
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "underscore": "^1.8.3",
+    "angular-route": "^1.6.5"
+  }
+}

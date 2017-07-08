@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css"/>
 </head>
-<body>
-<h1>Hello :P</h1>
+<body ng-app="myApp" >
+<script>
+
+</script>
+<div class="container" ng-app="myApp">
+    <div ng-view=""></div>
+</div>
+
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-route/angular-route.js"></script>
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="/bower_components/underscore/underscore.js"></script>
+
+<script src="/js/app.js"></script>
+<script src="/js/AppConfig.js"></script>
+<script src="/js/users/usersController.js"></script>
 </body>
 </html>
