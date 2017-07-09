@@ -1,6 +1,7 @@
 package com.example.demo.bean;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name="users")
 public class User {
 
     public enum Status{
@@ -26,14 +26,18 @@ public class User {
 
     private Status status;
 
+    @NotNull
     private String name;
 
     @Column(unique = true, nullable = false)
+    @NotNull
     private String email;
 
     @Column(nullable = false)
+    @NotNull
     private String passwordHash;
 
+    @NotNull
     private Date birthday;
 
     private String token;
