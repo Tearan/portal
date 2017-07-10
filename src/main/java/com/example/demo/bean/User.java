@@ -1,9 +1,10 @@
 package com.example.demo.bean;
 import lombok.*;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,15 +15,17 @@ import java.util.Date;
 @EqualsAndHashCode
 public class User {
 
-    public enum Status{
-        NEW, ACTIVE
-    }
     public enum Role{
         USER, ADMIN
     }
+
+    public enum Status{
+        NEW, ACTIVE
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
 
     private Status status;
 
@@ -42,6 +45,15 @@ public class User {
 
     private String token;
 
-    private ArrayList<Role> roles;
+    @ManyToMany
+    @JoinTable(name="User_roles",
+            joinColumns=
+            @JoinColumn(name="User_id", referencedColumnName="id"),
+            inverseJoinColumns=
+            @JoinColumn(name="Role_id", referencedColumnName="id")
+    )
+    private List<Role> roles;
 
+//    @OneToMany//TODO ogarnąć
+//    private List<Advertisement> advertisements;
 }
