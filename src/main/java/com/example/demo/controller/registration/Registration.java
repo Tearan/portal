@@ -22,6 +22,8 @@ public class Registration {
 
     private String lastName;
 
+    private String login;
+
     private String email;
 
     private String password;
@@ -33,7 +35,8 @@ public class Registration {
     public User getUser(){
         UserBuilder builder  = User.builder()
                 .name(getFirstName()+" "+getLastName())
-                .email(getEmail());
+                .email(getEmail())
+                .login(getLogin());
         try{
             DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
             builder.birthday(format.parse(getBirthday()));

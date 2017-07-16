@@ -17,10 +17,11 @@ public class Role {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String roleName;
+
+    private String name;
 
     @ManyToMany(mappedBy = "roles")
     private List<User> users;

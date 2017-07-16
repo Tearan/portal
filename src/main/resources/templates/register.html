@@ -14,27 +14,31 @@
 <form th:action="@{/register}" method="post" th:object="${registration}">
     <div class="container">
         <div class="row">
-            <span>Imię </span>
+            <span>Login: </span>
+            <input type="text"  th:field="*{login}"/>
+        </div>
+        <div class="row">
+            <span>Imię: </span>
             <input type="text"  th:field="*{firstName}"/>
         </div>
         <div class="row">
-            <span>Nazwisko</span>
+            <span>Nazwisko:</span>
             <input type="text"  th:field="*{lastName}"/>
         </div>
         <div class="row">
-            <span>E-mail</span>
+            <span>E-mail:</span>
             <input type="email" name="email" th:field="*{email}"/>
         </div>
         <div class="row">
-            <span>Data urodzin</span>
+            <span>Data urodzin:</span>
             <input type="date" name="birthday" th:field="*{birthday}"/>
         </div>
         <div class="row">
-            <span>Hasło</span>
+            <span>Hasło:</span>
             <input type="password" name="password" th:field="*{password}"/>
         </div>
         <div class="row">
-            <span>Potwierdzenie hasła</span>
+            <span>Potwierdzenie hasła:</span>
             <input type="password" name="passwordConfirmation" th:field="*{passwordConfirmation}"/>
         </div>
     </div>

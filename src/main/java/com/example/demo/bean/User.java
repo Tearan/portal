@@ -15,22 +15,21 @@ import java.util.List;
 @EqualsAndHashCode
 public class User {
 
-    public enum Role{
-        USER, ADMIN
-    }
-
     public enum Status{
         NEW, ACTIVE
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
     private Status status;
 
     @NotNull
     private String name;
+
+    @NotNull
+    private String login;
 
     @Column(unique = true, nullable = false)
     @NotNull
@@ -45,8 +44,8 @@ public class User {
 
     private String token;
 
-    @ManyToMany
-    @JoinTable(name="User_roles",
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="User_Role",
             joinColumns=
             @JoinColumn(name="User_id", referencedColumnName="id"),
             inverseJoinColumns=
@@ -54,6 +53,4 @@ public class User {
     )
     private List<Role> roles;
 
-//    @OneToMany//TODO ogarnąć
-//    private List<Advertisement> advertisements;
 }
