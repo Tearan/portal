@@ -44,7 +44,7 @@ public class User {
 
     private String token;
 
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name="User_Role",
             joinColumns=
             @JoinColumn(name="User_id", referencedColumnName="id"),

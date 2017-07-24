@@ -3,6 +3,7 @@ package com.example.demo.bean;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Role {
+public class Role implements GrantedAuthority {
 
 
     @Id
@@ -23,9 +24,13 @@ public class Role {
 
     private String name;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 
 
-
+    @Override
+    public String getAuthority() {
+        return this.name;
+    }
 }
