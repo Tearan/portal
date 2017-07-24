@@ -44,7 +44,7 @@ public class User {
 
     private String token;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//TODO na pewno EAGER?
     @JoinTable(name="User_Role",
             joinColumns=
             @JoinColumn(name="User_id", referencedColumnName="id"),
