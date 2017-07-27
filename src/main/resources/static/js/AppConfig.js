@@ -3,16 +3,22 @@
  */
 'use.strict'
 
-angular.module('myApp')
-    .config(["$locationProvider","$routeProvider",function ($locationProvider,$routeProvider) {
-    $routeProvider
-        .when("/users", {
-        controller: 'UsersController',
-        templateUrl: './js/users/show.html'})
-        .otherwise("/");
+App
+    .config(['$locationProvider','$routeProvider',
+        function ($locationProvider,$routeProvider) {
+            $routeProvider
+                .when('/user', {
+                    templateUrl: '/js/users/show.html',
+                    controller: 'UsersController'})
+                .when('/adv', {
+                    templateUrl: '/js/advertisement/create.html',
+                    controller: 'AdvController'})
+                .when('/', {
+                    templateUrl: '/js/dashboard/dashboard.html',
+                    controller: 'DashboardController'})
+                .otherwise("/");
 
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
+            // $locationProvider.html5Mode({
+            //     enabled: true
+            // });
 }]);

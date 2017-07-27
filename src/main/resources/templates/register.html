@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example </title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/register}" method="post" th:object="${registration}">
+    <div class="container">
+        <div class="row">
+            <span>Login: </span>
+            <input type="text"  th:field="*{login}"/>
+        </div>
+        <div class="row">
+            <span>Imię: </span>
+            <input type="text"  th:field="*{firstName}"/>
+        </div>
+        <div class="row">
+            <span>Nazwisko:</span>
+            <input type="text"  th:field="*{lastName}"/>
+        </div>
+        <div class="row">
+            <span>E-mail:</span>
+            <input type="email" name="email" th:field="*{email}"/>
+        </div>
+        <div class="row">
+            <span>Data urodzin:</span>
+            <input type="date" name="birthday" th:field="*{birthday}"/>
+        </div>
+        <div class="row">
+            <span>Hasło:</span>
+            <input type="password" name="password" th:field="*{password}"/>
+        </div>
+        <div class="row">
+            <span>Potwierdzenie hasła:</span>
+            <input type="password" name="passwordConfirmation" th:field="*{passwordConfirmation}"/>
+        </div>
+    </div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>
+
