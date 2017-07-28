@@ -1,0 +1,39 @@
+<div class="container" >
+    <form>
+        <div class="row">
+            <div class="form-group">
+                <h2>Title</h2>
+                <input type="text" ng-model="title">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <h2>Content</h2>
+                <textarea type="text"  rows="10" cols="40" ng-model="content"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <h2>Pictures</h2>
+                <input type="file" ng-model="attachment">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <h2>Category</h2>
+                <div ng-repeat=" category in $ctrl.categories" ng-model="categories">
+                    <input type="checkbox">{{ category}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <h2>Type</h2>
+                <input type="radio" value="BUYING" ng-model="type">BUYING</br>
+                <input type="radio" value="SALE" ng-model="type">SALE</br>
+                <input type="radio" value="EXCHANGE" ng-model="type">EXCHANGE</br>
+            </div>
+        </div>
+    </form>
+    <button type="submit">SAVE</button>
+</div>

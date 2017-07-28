@@ -3,8 +3,7 @@
  */
 'use strict';
 
-App.
-controller('DashboardController',
+App.controller('DashboardController',
     function () {
         var self = this;
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html >
+<html  >
 <head>
     <base href="/"/>
     <meta charset="UTF-8"/>
@@ -15,20 +15,26 @@
     <script src="/js/users/users.component.js"></script>
     <link href="/js/users/show.html"/>
 
-    <script src="/js/advertisement/adv.component.js"></script>
-    <link href="/js/advertisement/create.html"/>
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css"/>
-</head>
-<body ng-app="myApp" >
-<header>
-    <div class="navbar">
-        <a ng-href="/">Home</a>
-        <a ng-href="#!/user">Users</a>
-        <a ng-href="#!/adv">create adv</a>
+    <script src="/js/dashboard/dashboard.component.js" type="application/javascript"></script>
+    <link href="/js/dashboard/dashboard.template.html"/>
 
-    </div>
-</header>
-<div class="container" ng-app="myApp">
+    <script src="/js/customheader/customheader.module.js" type="application/javascript"></script>
+    <script src="/js/customheader/customheader.component.js" type="application/javascript"></script>
+    <link href="/js/customheader/customheader.template.html"/>
+
+    <script src="/js/advertisement/adv.module.js" type="application/javascript"></script>
+    <script src="/js/advertisement/adv.component.js" type="application/javascript"></script>
+    <link href="/js/advertisement/adv.template.html"/>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/Style.css" type="text/css"/>
+</head>
+<body  ng-app="portal">
+<div class="container">
+    <customheader/>
+
+</div>
+
+<div class="container">
     <div ng-view=""></div>
 </div>
 

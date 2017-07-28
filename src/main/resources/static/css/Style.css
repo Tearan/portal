@@ -1,0 +1,172 @@
+
+
+
+body{
+
+   display:block;
+   font-family: 'Catamaran', sans-serif !important;
+}
+
+.top-nav{
+   background-color:#34495E;/* #354353;*/
+}
+
+.top-nav{
+   padding-top: 20px ;
+}
+
+.top-nav ul {
+   margin: 0px !important;
+   list-style: none ;
+}
+
+.list-inline li{
+   margin-right: 20px;
+}
+
+header{
+   background-color: #212F3D;/*#212A34;#172A34*/
+   color: #F2F1EF;
+   font-size: medium ;
+   box-shadow:5px 5px 10px;
+}
+.navbar-right{
+   text-align: right;
+}
+
+.menu-nav{
+   background:#333333;
+   height:30px;
+}
+
+.navbar{
+   margin-bottom:0px !important;
+   padding: 8px 0;
+}
+
+.ico-picture{
+   display:inline;
+   margin-right: 20px;
+}
+
+.navbar .ico-picture a{
+   margin-left: 15px;
+   text-decoration: none;
+   color: #9acfea;
+
+}
+
+.ico-picture img{
+   height: 32px;
+   width:32px;
+}
+
+.ico-picture button{
+   background-color: transparent ;
+   border-style: none ;
+}
+
+.menu{
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+/*Page ontent.........................................*/
+
+.border-dotted-radius{
+   border: #CCCCCC  dashed 1px;
+   border-radius: 25px;
+}
+
+.about-me{
+   padding: 20px 0;
+}
+.about-me-content{
+   padding-top: 30px;
+   padding-bottom: 30px;
+}
+.about-me-content-text{
+
+   padding: 15px;
+   text-align: justify;
+}
+
+.about-me-content .my-picture img{
+   margin: 20px ;
+}
+
+
+.my-picture img{
+   height: 200px;
+
+}
+
+.float-left{
+   float:left;
+}
+
+.float-right{
+   float:right;
+}
+
+.inline{
+   display: inline-block;
+}
+
+.abilities{
+   margin-top: 10px;
+}
+
+
+.about-me-content h2{
+
+
+}
+
+
+
+.page-content h1{
+
+}
+
+.page-content h2{
+   padding-bottom: 15px;
+   margin-left: 20px;
+
+}
+li{
+   list-style: none;
+
+}
+
+.content-text{
+   padding-left: 20px;
+}
+/*.list-abilities{
+   background-color: #BADF91 ;
+
+}*/
+.list-view{
+   display: table;
+   width: 100%;
+   margin: 0;
+}
+
+.img{
+   text-align: center;
+}
+
+/*.list-abilities-header{
+   background: #8CC152;
+   padding: 20px 0 9px 0;
+
+
+}*/
+
+.list-abilities-header h2{
+   padding: 0px 0px 20px 20px;
+}
+
+.list-element{
+   padding: 15px 0;
+}
