@@ -4,11 +4,17 @@
 
 'use strict';
 
-App.
-controller('AdvController',
-    function () {
+angular.module('adv').component('adv', {
+    templateUrl: '/js/advertisement/adv.template.html',
+    controller:  ['$scope',function AdvController($scope) {
         var self = this;
 
         self.categories = ['MOTO', 'PET', 'MAN', 'WOMAN', 'CLOTHES', 'JEWELLERY', 'HOME'];
 
-    });
+    }],
+    bindings: {
+        ngModel: '=',
+        options: '=',
+        metricId: '@'
+    }
+});

@@ -3,8 +3,7 @@
  */
 'use strict';
 
-App.
-controller('UsersController',
+App.controller('UsersController',
     function () {
         var self = this;
 
