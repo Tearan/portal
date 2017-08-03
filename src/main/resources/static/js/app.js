@@ -7,6 +7,9 @@
 var App = angular.module('portal',[
     'ngRoute',
     'customheader',
-    'adv'
+    'adv',
+    'dashboard',
+    'core.advertisement',
+    'core.user'
 
 ]);

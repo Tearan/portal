@@ -4,19 +4,25 @@
     <base href="/"/>
     <meta charset="UTF-8"/>
     <title>Title</title>
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-route/angular-route.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/underscore/underscore.js"></script>
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"  type="text/css"/>
+    <link rel="stylesheet" href="/css/Style.css" type="text/css"/>
 
     <script src="/js/app.js"></script>
     <script src="/js/AppConfig.js"></script>
     <script src="/js/users/users.component.js"></script>
     <link href="/js/users/show.html"/>
 
-    <script src="/js/dashboard/dashboard.component.js" type="application/javascript"></script>
-    <link href="/js/dashboard/dashboard.template.html"/>
+    <script src="/js/core/adv/advertisement.module.js" type="application/javascript"></script>
+    <script src="/js/core/adv/advertisement.service.js" type="application/javascript"></script>
+
+    <script src="/js/core/user/user.module.js" type="application/javascript"></script>
+    <script src="/js/core/user/user.service.js" type="application/javascript"></script>
 
     <script src="/js/customheader/customheader.module.js" type="application/javascript"></script>
     <script src="/js/customheader/customheader.component.js" type="application/javascript"></script>
@@ -25,18 +31,19 @@
     <script src="/js/advertisement/adv.module.js" type="application/javascript"></script>
     <script src="/js/advertisement/adv.component.js" type="application/javascript"></script>
     <link href="/js/advertisement/adv.template.html"/>
-    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/Style.css" type="text/css"/>
+
+
+    <script src="/js/dashboard/dashboard.module.js" type="application/javascript"></script>
+    <script src="/js/dashboard/dashboard.component.js" type="application/javascript"></script>
+    <link href="/js/dashboard/dashboard.template.html"/>
 </head>
 <body  ng-app="portal">
-<div class="container">
+
     <customheader/>
 
-</div>
-
-<div class="container">
-    <div ng-view=""></div>
-</div>
+    <div class="container">
+        <div ng-view=""></div>
+    </div>
 
 
 

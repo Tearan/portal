@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,19 +17,23 @@ import java.util.List;
 @Data
 public class Advertisement {
 
-    private enum Category{
+    public enum Category{
         MOTO, PET, MAN, WOMAN, CLOTHES, JEWELLERY, HOME
     }
 
-    private enum Type{
+    public enum Type{
         BUYING, SALE, EXCHANGE
     }
 
+    public enum Status{
+        NEW, CLOSED
+    }
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String author_id;
+    private String authorId;
 
     private String content;
 
@@ -42,10 +48,12 @@ public class Advertisement {
     @CollectionTable(name="Advertisement_categories", joinColumns = @JoinColumn(name = "Advertisement_id"))
     private List<Category> categories;
 
+    @Enumerated(EnumType.STRING)
     private Type type;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
-    private String creationData;
+    private Date creationDate;
 
 }

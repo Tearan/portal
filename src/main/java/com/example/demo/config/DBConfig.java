@@ -42,6 +42,7 @@ public class DBConfig {
     public HibernateJpaVendorAdapter getJpaVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         adapter.setGenerateDdl(env.getProperty("hibernate.generateDdl",Boolean.class));
+
         return adapter;
     }
 
@@ -69,11 +70,16 @@ public class DBConfig {
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.generateDdl", env.getProperty("hibernate.generateDdl"));
+
+
         return properties;
     }
 
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
+
         return new PersistenceExceptionTranslationPostProcessor();
     }
 

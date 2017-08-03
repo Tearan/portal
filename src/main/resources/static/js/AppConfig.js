@@ -8,16 +8,15 @@ App
         function ($locationProvider,$routeProvider) {
             $routeProvider
                 .when('/user', {
-                    templateUrl: '/js/users/show.html',
-                    controller: 'UsersController'})
+                    controller: 'UsersController',
+                    templateUrl: '/js/users/show.html'})
                 // .when('/adv', {
                 //     templateUrl: '/js/advertisement/create.html',
                 //     controller: 'AdvController'})
                 .when('/adv', {
-                template: '<adv/>'})
+                    template: '<adv/>'})
                 .when('/', {
-                    templateUrl: '/js/dashboard/dashboard.template.html',
-                    controller: 'DashboardController'})
+                    template: '<dashboard/>'})
                 .otherwise("/");
 
             // $locationProvider.html5Mode({
