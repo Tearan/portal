@@ -16,7 +16,7 @@ import java.util.List;
 public class User {
 
     public enum Status{
-        NEW, ACTIVE
+        WAITING_CONFIRMATION, ACTIVE
     }
 
     @Id

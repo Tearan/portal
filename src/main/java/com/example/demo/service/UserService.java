@@ -5,6 +5,7 @@ import com.example.demo.bean.User;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -25,9 +26,12 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private UserRepository userRepository;
+
     public User createUser(User user, String password ){
         user.setPasswordHash(passwordEncoder.encode(password));
-        user.setStatus(User.Status.NEW);
+        user.setStatus(User.Status.WAITING_CONFIRMATION);
         ArrayList roles = new ArrayList();
         Role newRole = roleRepository.getByName("USER");
         roles.add(newRole);
@@ -35,5 +39,11 @@ public class UserService {
         repository.save(user);
         //TODO add notifier
         return user;
+    }
+
+    public  User getCurrentUser(){
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User currentUser = userRepository.findByEmail(email);
+        return currentUser;
     }
 }
