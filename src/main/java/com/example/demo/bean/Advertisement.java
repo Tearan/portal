@@ -43,7 +43,7 @@ public class Advertisement {
 
     @ElementCollection(targetClass=Category.class)
 //    @JoinTable(name = "Category", joinColumns = @JoinColumn(name = "Advertisement_id"))
-    @Column(name = "Category", nullable = false)
+    @Column(name = "Category", nullable = false)//todo zmienić na małe literki
     @Enumerated(EnumType.STRING)
     @CollectionTable(name="Advertisement_categories", joinColumns = @JoinColumn(name = "Advertisement_id"))
     private List<Category> categories;

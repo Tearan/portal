@@ -1,39 +1,62 @@
-<div class="container" >
+<div class="row content-header">
+    <h1>Add new advertisement</h1>
+</div>
+<div class="bar"></div>
+<div class="content">
     <form>
         <div class="row">
             <div class="form-group">
-                <h2>Title</h2>
-                <input type="text" ng-model="$ctrl.advertisement.title">
+                <label for="title">Title</label>
+                <input class="form-control" type="text" ng-model="$ctrl.advertisement.title" id="title">
             </div>
         </div>
         <div class="row">
             <div class="form-group">
-                <h2>Content</h2>
-                <textarea type="text"  rows="10" cols="40" ng-model="$ctrl.advertisement.content"></textarea>
+                <label for="content" class=""> Content  </label>
+                <textarea class="form-control" id="content" type="text"  rows="10" cols="40" ng-model="$ctrl.advertisement.content"></textarea>
             </div>
         </div>
         <div class="row">
             <div class="form-group">
-                <h2>Pictures</h2>
-                <input type="file" ng-model="$ctrl.advertisement.attachment">
+                <label for="files"> Title  </label>
+                <input id="files"  type="file" ng-model="$ctrl.advertisement.attachment">
+                <p class="help-block">MAX 25Mb</p>
             </div>
         </div>
         <div class="row">
             <div class="form-group">
-                <h2>Category</h2>
-                <div ng-repeat=" category in $ctrl.categories" ng-model="$ctrl.advertisement.categories">
-                    <input type="checkbox">{{ category}}
+                <label>Categories</label>
+
+                <div class="checkbox" id="category" ng-repeat=" category in $ctrl.categories" >
+                    <label>
+                    <input  type="checkbox" ng-change="$ctrl.addDeleteCategory(category)" ng-model="$ctrl.advertisement.categories[category]">{{ category}}
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group ">
+                <label>Type</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" value="BUYING" ng-model="$ctrl.advertisement.type">BUYING</br>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" value="SALE" ng-model="$ctrl.advertisement.type">SALE</br>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" value="EXCHANGE" ng-model="$ctrl.advertisement.type">EXCHANGE</br>
+                    </label>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="form-group">
-                <h2>Type</h2>
-                <input type="radio" value="BUYING" ng-model="$ctrl.advertisement.type">BUYING</br>
-                <input type="radio" value="SALE" ng-model="$ctrl.advertisement.type">SALE</br>
-                <input type="radio" value="EXCHANGE" ng-model="$ctrl.advertisement.type">EXCHANGE</br>
-            </div>
-        </div>
     </form>
-    <button type="submit" ng-click="$ctrl.save()">SAVE</button>
+    <div class="content-footer">
+    <button  type="submit" class="btn  blue-button" ng-click="$ctrl.save()">SAVE</button>
+    </div>
 </div>
