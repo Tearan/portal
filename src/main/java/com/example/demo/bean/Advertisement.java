@@ -1,11 +1,8 @@
 package com.example.demo.bean;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -39,10 +36,10 @@ public class Advertisement {
 
     private String title;
 
-    private String picture;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "advertisement", cascade = CascadeType.PERSIST)//TODO do zastanowienia czy potrzeba drugą tabelkę
+    private List<Attachment> pictures;
 
     @ElementCollection(targetClass=Category.class)
-//    @JoinTable(name = "Category", joinColumns = @JoinColumn(name = "Advertisement_id"))
     @Column(name = "Category", nullable = false)//todo zmienić na małe literki
     @Enumerated(EnumType.STRING)
     @CollectionTable(name="Advertisement_categories", joinColumns = @JoinColumn(name = "Advertisement_id"))
@@ -55,5 +52,7 @@ public class Advertisement {
     private Status status;
 
     private Date creationDate;
+
+
 
 }

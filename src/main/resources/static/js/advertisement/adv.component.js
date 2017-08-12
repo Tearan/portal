@@ -10,15 +10,30 @@ angular.module('adv').component('adv', {
         var self = this;
         self.advertisement = {};
         self.advertisement.categories = [];
+        self.pictures = [];
         self.categories = ['MOTO', 'PET', 'MAN', 'WOMAN', 'CLOTHES', 'JEWELLERY', 'HOME'];
 
         self.save = function () {
-            var newAdvertisement = new Advertisement(self.advertisement);
-            newAdvertisement.$save(function (response) {
+            var parameters  = new FormData();
+            for (var i=0; i < self.pictures.length; i++){
+                //todo oAle dlaczego to tak działa?
+                parameters.append("pictures", self.pictures[i]);
+
+            }
+            console.log(parameters.pictures);
+            parameters.append("advertisement",
+                new Blob([
+                    JSON.stringify(self.advertisement)
+                ], {
+                type: "application/json"
+            }));
+
+
+            Advertisement.save(parameters,function (response) {
                 console.log("nowe ogłoszenie"+response.id);
-
+            },function (res) {
+                console.log(res);
             })
-
         };
 
         self.addDeleteCategory = function (category) {
@@ -28,6 +43,10 @@ angular.module('adv').component('adv', {
             }else{
                 self.advertisement.categories.push(category);
             }
+        }
+
+        self.write = function () {
+            console.log(self.pictures);
         }
     }],
     bindings: {

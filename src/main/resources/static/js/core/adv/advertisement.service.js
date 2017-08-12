@@ -6,8 +6,8 @@
 
 angular.
 module('core.advertisement').
-factory('Advertisement', ['$resource',
-    function($resource) {
+factory('Advertisement', ['$resource', '$http',
+    function($resource, $http) {
         var Advertisement =  $resource('adv/:owner/:id', {
             owner: "@owner",
             id: "@id"
@@ -20,6 +20,21 @@ factory('Advertisement', ['$resource',
                 isArray: true
             }
         });
+
+        Advertisement.save = function (fd) {
+
+            return $http({
+                url: "/adv",
+                method: "POST",
+                data: fd,
+                // transformRequest: angular.identity,
+                headers: {
+                    'Content-Type': undefined
+                },
+                arrayKey: ''
+
+            })
+        }
 
         Advertisement.getByAuthor = function(author_id){
             return Advertisement.get({

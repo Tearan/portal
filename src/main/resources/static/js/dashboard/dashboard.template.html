@@ -2,22 +2,37 @@
     <div class="row content-header">
         <h1>dashboard</h1>
     </div>
+
+    <div class="bar"></div><!--ToDo do zmiany -->
+
     <div class="row content-search">
-        <input type="search" ng-model="$ctrl.search.title">
-        <select  ng-model="$ctrl.search.type" >
-            <option value="">All</option>
-            <option ng-repeat="type in $ctrl.types" value="{{type}}">{{ type }} </option>
-        </select>
+        <div class="inline">
+        <span>Search by title</span>
+        <input type="search" ng-model="$ctrl.search.title" placeholder="title">
+        </div>
+        <div class="inline">
+            <span>Search by type</span>
+            <select  ng-model="$ctrl.search.type" >
+                <option value="">All</option>
+                <option ng-repeat="type in $ctrl.types" value="{{type}}">{{ type }} </option>
+            </select>
+        </div>
     </div>
-    <div class="c">
+    <div class="bar"></div><!--ToDo do zmiany -->
+    <div class="">
         <div class="row">
             <div ng-repeat="adv in $ctrl.listAdv | filter:$ctrl.search" class="col-xs-6 col-lg-4">
                 <div class=" advertisement">
-                    <h1>{{ adv.title}}</h1>
-                    <h3>{{ adv.content}}</h3>
-                    <h2>{{ adv.type }}</h2>
+                    <h2>{{ adv.title}}</h2>
+                    <span>{{ adv.content}}</span>
+                    <div>
+                        <span>
+                            <b>{{ adv.type }}</b>
+                        </span>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

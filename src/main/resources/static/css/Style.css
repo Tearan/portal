@@ -2,11 +2,14 @@
 
 
 body{
-
+   background-color: whitesmoke;
    display:block;
    font-family: 'Catamaran', sans-serif !important;
 }
-
+.bar{
+   margin: 20px 10px;
+   border: 1px solid lightgrey;
+}
 .top-nav{
    background-color:#34495E;/* #354353;*/
 }
@@ -71,35 +74,45 @@ header{
    padding-bottom: 5px;
 }
 
-/*Page ontent.........................................*/
+/*Page content.........................................*/
 
-.border-dotted-radius{
-   border: #CCCCCC  dashed 1px;
-   border-radius: 25px;
+.content{
+   box-shadow: 5px 5px 5px #9d9d9d;
+   background-color: white;
+   padding: 30px 10px;
+
+}
+.content-header{
+   margin: 20px 10px;
 }
 
-.about-me{
-   padding: 20px 0;
-}
-.about-me-content{
-   padding-top: 30px;
-   padding-bottom: 30px;
-}
-.about-me-content-text{
-
-   padding: 15px;
-   text-align: justify;
+.content-search{
+   margin: 20px 40px;
 }
 
-.about-me-content .my-picture img{
+form .row{
    margin: 20px ;
+   padding: 15px;
+   border-bottom: 0.5px solid lightgrey;
 }
 
-
-.my-picture img{
-   height: 200px;
+.blue-button{
+   color: whitesmoke;
+   background-color: #212F3D;
 
 }
+.content-footer{
+   text-align: right;
+   margin: 15px 30px;
+}
+
+.content-search div{
+   margin-right: 25px;
+}
+.content-search div span{
+   margin-right: 10px;
+}
+
 
 .float-left{
    float:left;
@@ -118,34 +131,11 @@ header{
 }
 
 
-.about-me-content h2{
-
-
-}
-
-
-
-.page-content h1{
-
-}
-
-.page-content h2{
-   padding-bottom: 15px;
-   margin-left: 20px;
-
-}
 li{
    list-style: none;
 
 }
 
-.content-text{
-   padding-left: 20px;
-}
-/*.list-abilities{
-   background-color: #BADF91 ;
-
-}*/
 .list-view{
    display: table;
    width: 100%;
@@ -169,4 +159,11 @@ li{
 
 .list-element{
    padding: 15px 0;
+}
+
+
+.advertisement{
+   box-shadow: 5px 5px 5px #9d9d9d;
+   background-color: white;
+
 }

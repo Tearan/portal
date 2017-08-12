@@ -19,8 +19,9 @@
         <div class="row">
             <div class="form-group">
                 <label for="files"> Title  </label>
-                <input id="files"  type="file" ng-model="$ctrl.advertisement.attachment">
+                <input multiple file-upload="picFiles" name="files" id="files"  type="file" ng-model="$ctrl.pictures" ng-change="$ctrl.write()">
                 <p class="help-block">MAX 25Mb</p>
+                <span class="error" ng-show="files.$error.filesToBig">Pliki są za duże </span>
             </div>
         </div>
         <div class="row">
