@@ -1,8 +1,11 @@
 package com.example.demo.bean;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +14,8 @@ import java.util.List;
  */
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Advertisement {
 
     public enum Category{
@@ -36,8 +40,9 @@ public class Advertisement {
 
     private String title;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "advertisement", cascade = CascadeType.PERSIST)//TODO do zastanowienia czy potrzeba drugą tabelkę
-    private List<Attachment> pictures;
+    @OneToMany(mappedBy = "advertisement", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)//TODO do zastanowienia czy potrzeba drugą tabelkę
+    @JsonIgnore
+    private List<Attachment> pictures = new ArrayList<>();
 
     @ElementCollection(targetClass=Category.class)
     @Column(name = "Category", nullable = false)//todo zmienić na małe literki
@@ -49,10 +54,13 @@ public class Advertisement {
     private Type type;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.NEW;
 
     private Date creationDate;
 
-
+    public void addAttachment(Attachment attachment){
+            pictures.add(attachment);
+            attachment.setAdvertisement(this);
+    }
 
 }

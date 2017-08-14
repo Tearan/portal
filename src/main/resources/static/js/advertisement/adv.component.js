@@ -20,14 +20,13 @@ angular.module('adv').component('adv', {
                 parameters.append("pictures", self.pictures[i]);
 
             }
-            console.log(parameters.pictures);
+
             parameters.append("advertisement",
                 new Blob([
                     JSON.stringify(self.advertisement)
                 ], {
                 type: "application/json"
             }));
-
 
             Advertisement.save(parameters,function (response) {
                 console.log("nowe ogłoszenie"+response.id);

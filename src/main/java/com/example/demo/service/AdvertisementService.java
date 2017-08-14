@@ -33,27 +33,24 @@ public class AdvertisementService {
     private AttachmentService attachmentService;
 
 
-    public Advertisement addAdvertisement(Advertisement advertisement, List<MultipartFile> attachment){
-
-        List<Attachment> attachmentList = new ArrayList<>();
+    public Advertisement addAdvertisement(Advertisement advertisement, List<MultipartFile> attachments){
 
 
-        advertisement.setStatus(Advertisement.Status.NEW);
         User author = userService.getCurrentUser();
         advertisement.setAuthorId(author.getId().toString());
         advertisement.setCreationDate(new Date());
 
-        Advertisement createdAdv = advRepository.save(advertisement);
-        attachment.stream().forEach(pic -> {
+        attachments.stream().forEach(pic -> {
+
             try {
-                Attachment newPic = attachmentService.save(pic);
-                attachmentList.add(newPic);
+                Attachment newPic = new Attachment(pic);
+                advertisement.addAttachment(newPic);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
 
-        advertisement.setPictures(attachmentList);
+        });
+        Advertisement createdAdv = advRepository.save(advertisement);
         return createdAdv;
     }
 
