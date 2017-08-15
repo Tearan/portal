@@ -124,6 +124,7 @@ form .row{
 
 .inline{
    display: inline-block;
+   float: left;
 }
 
 .abilities{
@@ -167,3 +168,63 @@ li{
    background-color: white;
 
 }
+
+.MOTO{
+   background: url("ico/motorbike-side-view.svg") no-repeat top left;
+   background-size: contain;
+   width: 40px;
+   height: 40px;
+}
+.PET{
+   background: url("ico/pawprint.svg") no-repeat top left;
+   background-size: contain;
+   width: 40px;
+   height: 40px;
+}
+.MAN{
+   background: url("ico/man.svg") no-repeat top left;
+   background-size: contain;
+   width: 40px;
+   height: 40px;
+}
+.WOMAN{
+   background: url("ico/woman.svg") no-repeat top left;
+   width: 40px;
+   height: 40px;
+}
+.CLOTHES{
+   background: url("ico/shirt.svg") no-repeat top left;
+   background-size: contain;
+   width: 40px;
+   height: 40px;
+}
+.JEWELLERY{
+   background: url("ico/diamond.svg") no-repeat top left;
+   background-size: contain;
+   width: 40px;
+   height: 40px;
+}
+.HOME{
+   background: url("ico/home.svg") no-repeat top left;
+   background-size: contain;
+   width: 40px;
+   height: 40px;
+}
+
+.ico{
+   margin: 0px 10px;
+
+}
+.adv-header{
+   display: flex;
+   padding:10px;
+}
+
+.adv-footer{
+   display: flex;
+}
+.adv-content{
+   margin: 30px 20px;
+   font-size: 1.5em;
+}
+

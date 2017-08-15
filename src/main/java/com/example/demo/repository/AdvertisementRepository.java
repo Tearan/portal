@@ -16,6 +16,7 @@ import java.util.List;
 public interface AdvertisementRepository extends CrudRepository<Advertisement, Long> {
     List<Advertisement> findByCreationDate(@Param("roleName")String date);
     List<Advertisement> findByAuthorId(@Param("author_id")String author_id);
+    Advertisement findById(@Param("id")Long id);
     List<Advertisement> findAll();
 
 }

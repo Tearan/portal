@@ -1,6 +1,9 @@
-package com.example.demo.rest.Advertisement;
+package com.example.demo.rest;
 
 import com.example.demo.bean.Advertisement;
+import com.example.demo.bean.Attachment;
+import com.example.demo.repository.AdvertisementRepository;
+import com.example.demo.repository.AttachmentRepository;
 import com.example.demo.service.AdvertisementService;
 import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
@@ -25,7 +28,12 @@ public class AdvertisementController {
     private final Logger LOG = Logger.getLogger(AdvertisementController.class);
 
     @Autowired
-    private AdvertisementService advService;
+    private AdvertisementService advertisementService;
+    @Autowired
+    private AdvertisementRepository advertisementRepository;
+
+    @Autowired
+    private AttachmentRepository attachmentRepository;
 
 
     @RequestMapping( method = RequestMethod.POST, consumes = {"application/octet-stream", "multipart/mixed", "multipart/form-data" })
@@ -33,7 +41,7 @@ public class AdvertisementController {
             @RequestPart(value = "pictures") List<MultipartFile> files,
             @RequestPart(value = "advertisement") Advertisement advertisement) throws IOException {
 
-        Advertisement savedAdv = advService.addAdvertisement(advertisement, files);
+        Advertisement savedAdv = advertisementService.addAdvertisement(advertisement, files);
 
         return ResponseEntity.ok(savedAdv);
     }
@@ -41,7 +49,7 @@ public class AdvertisementController {
     @RequestMapping(value = "/author/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Advertisement>> getAdvertisements(@PathVariable("id") String condition){
         LOG.info("getAdvertisements for userId: "+condition);
-        List<Advertisement> list = advService.findByAuthor(condition);
+        List<Advertisement> list = advertisementService.findByAuthor(condition);
         return ResponseEntity.ok(list);
     }
 
@@ -49,6 +57,14 @@ public class AdvertisementController {
     public ResponseEntity<List<Advertisement.Status>> getStatuses(){
         List<Advertisement.Status> statuses = Arrays.asList(Advertisement.Status.values());
          return ResponseEntity.ok(statuses);
+    }
+
+    @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Advertisement> getDetails(@PathVariable("id") String id ){
+        Advertisement advertisement = advertisementRepository.findById(Long.parseLong(id));
+//        advertisement.setPictures(attachmentRepository.findByAdvertisement_Id(Long.parseLong(id)));
+        LOG.info(advertisement);
+        return ResponseEntity.ok(advertisement);
     }
 
     @RequestMapping(value = "/types", method = RequestMethod.GET)
@@ -59,7 +75,7 @@ public class AdvertisementController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Advertisement>> getAll(){
-        List<Advertisement> adv = advService.getAll();
+        List<Advertisement> adv = advertisementService.getAll();
         return ResponseEntity.ok(adv);
     }
 

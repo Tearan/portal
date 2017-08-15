@@ -9,7 +9,7 @@ var App = angular.module('portal',[
     'customheader',
     'adv',
     'dashboard',
-    'core.advertisement',
-    'core.user'
-
+    'Advertisement',
+    'core.user',
+    'advdetail'
 ]);

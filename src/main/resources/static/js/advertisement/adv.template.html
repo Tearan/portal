@@ -30,7 +30,7 @@
 
                 <div class="checkbox" id="category" ng-repeat=" category in $ctrl.categories" >
                     <label>
-                    <input  type="checkbox" ng-change="$ctrl.addDeleteCategory(category)" ng-model="$ctrl.advertisement.categories[category]">{{ category}}
+                    <input type="checkbox" ng-change="$ctrl.addRemoveCategory(category)" ng-model="$ctrl.advertisement.categories[category]">{{ category}}
                     </label>
                 </div>
 

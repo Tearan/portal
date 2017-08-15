@@ -5,7 +5,7 @@
 'use strict';
 
 angular.
-module('core.advertisement').
+module('Advertisement').
 factory('Advertisement', ['$resource', '$http',
     function($resource, $http) {
         var Advertisement =  $resource('adv/:owner/:id', {
@@ -18,6 +18,10 @@ factory('Advertisement', ['$resource', '$http',
             get:{
                 method : 'GET',
                 isArray: true
+            },
+            query:{
+                method : 'GET',
+                isArray: false
             }
         });
 
@@ -58,6 +62,13 @@ factory('Advertisement', ['$resource', '$http',
         Advertisement.getTypes = function(){
             return Advertisement.get({
                 owner: "types"
+            })
+        };
+
+        Advertisement.getDetail = function(id){
+            return Advertisement.query({
+                owner: "detail",
+                id: id
             })
         };
 

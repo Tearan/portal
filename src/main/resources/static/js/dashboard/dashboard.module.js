@@ -5,6 +5,6 @@
 'use strict';
 
 angular.module('dashboard', [
-    'core.advertisement',
+    'Advertisement',
     'core.user'
 ]);

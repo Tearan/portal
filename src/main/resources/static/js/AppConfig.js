@@ -15,6 +15,8 @@ App
                 //     controller: 'AdvController'})
                 .when('/adv', {
                     template: '<adv/>'})
+                .when('/adv/detail/:id', {
+                    template: '<advdetail/>'})
                 .when('/', {
                     template: '<dashboard/>'})
                 .otherwise("/");
