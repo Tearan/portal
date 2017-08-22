@@ -8,7 +8,8 @@ angular.module("advdetail").component("advdetail", {
         var self = this;
 
          Advertisement.getDetail($route.current.params.id).$promise.then(function (result) {
-             self.advertisement = result;
+             self.advertisement = result.advertisement;
+             self.photos = result.files;
         });
     }],
 

@@ -4,16 +4,11 @@ import com.example.demo.bean.Advertisement;
 import com.example.demo.bean.Attachment;
 import com.example.demo.bean.User;
 import com.example.demo.repository.AdvertisementRepository;
-import com.example.demo.repository.AttachmentRepository;
-import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.channels.MulticastChannel;
-import java.util.ArrayList;
+import java.io.*;
 import java.util.Date;
 import java.util.List;
 
@@ -33,24 +28,24 @@ public class AdvertisementService {
     private AttachmentService attachmentService;
 
 
-    public Advertisement addAdvertisement(Advertisement advertisement, List<MultipartFile> attachments){
+    public Advertisement addAdvertisement(Advertisement advertisement, List<MultipartFile> files){
 
-
+        //todo It's the best way?
         User author = userService.getCurrentUser();
         advertisement.setAuthorId(author.getId().toString());
         advertisement.setCreationDate(new Date());
 
-        attachments.stream().forEach(pic -> {
-
+        files.stream().forEach(file -> {
             try {
-                Attachment newPic = new Attachment(pic);
-                advertisement.addAttachment(newPic);
+                Attachment newAttachment = new Attachment(file.getOriginalFilename().replace(" ", "-"));
+                advertisement.addAttachment(newAttachment);
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         });
         Advertisement createdAdv = advRepository.save(advertisement);
+        attachmentService.saveFileInDirectory(files, createdAdv.getId().toString());
         return createdAdv;
     }
 

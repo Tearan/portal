@@ -1,5 +1,5 @@
 <div class="row content-header">
-    <h1>{{ $ctrl.advertisement.title }}</h1>
+    <h1>{{ $ctrl.advertisement.title}}</h1>
 </div>
 <div class="bar"></div>
 <div class="content">
@@ -12,9 +12,14 @@
     <div class="adv-content">
         <span >{{ $ctrl.advertisement.content }}</span>
     </div>
+
+    <div class="photo" ng-repeat="photo in $ctrl.photos">
+        <img src="attachments/{{$ctrl.advertisement.id}}/{{photo}}" style="width:200px;height:200px;">
+    </div>
     <div class="bar"></div>
     <div class="adv-footer">
         <span class="{{cat}} ico inline content-footer" ng-repeat="cat in $ctrl.advertisement.categories">
         </span>
     </div>
+
 </div>

@@ -25,6 +25,8 @@ dist/
 nbdist/
 .nb-gradle/
 src/main/resources/static/bower_components/
+src/main/resources/static/attachments/
 src/main/resources/db.migration/
 node_modules/
 !/.gitignore
+

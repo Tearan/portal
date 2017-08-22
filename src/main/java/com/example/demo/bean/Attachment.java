@@ -1,7 +1,6 @@
 package com.example.demo.bean;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.io.IOException;
@@ -22,17 +21,12 @@ public class Attachment {
 
     private String name;
 
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column( nullable=false)
-    private byte[] picture_content;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="advertisement_id")
     private Advertisement advertisement;
 
-    public Attachment(MultipartFile attach) throws IOException {
-        this.picture_content = attach.getBytes();
-        this.name = attach.getOriginalFilename();
+    public Attachment(String fileName) throws IOException {
+        this.name = fileName;
     }
+
 }
