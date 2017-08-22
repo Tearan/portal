@@ -10,9 +10,6 @@ App
                 .when('/user', {
                     controller: 'UsersController',
                     templateUrl: '/js/users/show.html'})
-                // .when('/adv', {
-                //     templateUrl: '/js/advertisement/create.html',
-                //     controller: 'AdvController'})
                 .when('/adv', {
                     template: '<adv/>'})
                 .when('/adv/detail/:id', {
@@ -21,7 +18,5 @@ App
                     template: '<dashboard/>'})
                 .otherwise("/");
 
-            // $locationProvider.html5Mode({
-            //     enabled: true
-            // });
+
 }]);
