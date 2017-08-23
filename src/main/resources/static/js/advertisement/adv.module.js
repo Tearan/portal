@@ -4,4 +4,7 @@
 
 'use strict';
 
-angular.module('adv', [])
+angular.module('adv', [
+    'ui.bootstrap',
+    'adsuccess'
+])

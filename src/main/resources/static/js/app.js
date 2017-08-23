@@ -11,5 +11,10 @@ var App = angular.module('portal',[
     'dashboard',
     'Advertisement',
     'core.user',
-    'advdetail'
+    'advdetail',
+    'ui.bootstrap',
+
+
+    //uib modals
+
 ]);
