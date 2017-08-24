@@ -227,4 +227,16 @@ li{
    margin: 30px 20px;
    font-size: 1.5em;
 }
+.categories{
+   padding-left: 20px;
+}
 
+/*errors*/
+.error{
+   color: darkred !important;
+}
+
+.asterisk{
+   color: darkred !important;
+   font-size: 70%;
+}

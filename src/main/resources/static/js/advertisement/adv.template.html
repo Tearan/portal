@@ -3,61 +3,73 @@
 </div>
 <div class="bar"></div>
 <div class="content">
-    <form>
+    <form name="advertisement" novalidate role="form" >
+        <div class="row" ng-if="$ctrl.globalError">
+            {{ $ctrl.errorMessage }}
+        </div>
         <div class="row">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input class="form-control" type="text" ng-model="$ctrl.advertisement.title" id="title">
+            <div class="form-group" ng-class="{'has-error': advertisement.title.$error.required &&  advertisement.title.$touched}">
+                <label for="title">Title <div class="glyphicon glyphicon-asterisk asterisk"></div></label>
+                <input name="title" class="form-control" type="text" ng-model="$ctrl.advertisement.title" id="title" required>
+                <span ng-if="advertisement.title.$error.required && advertisement.title.$touched" class="help-block error">Required!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group"  ng-class="{'has-error': advertisement.content.$error.required &&  advertisement.content.$touched}">
+                <label for="content" class=""> Content  <div class="glyphicon glyphicon-asterisk asterisk"></div></label>
+                <textarea name="content" class="form-control" id="content" type="text"  rows="10" cols="40" ng-model="$ctrl.advertisement.content" required></textarea>
+                <span ng-if="advertisement.content.$error.required && advertisement.content.$touched" class="help-block error">Required</span>
             </div>
         </div>
         <div class="row">
             <div class="form-group">
-                <label for="content" class=""> Content  </label>
-                <textarea class="form-control" id="content" type="text"  rows="10" cols="40" ng-model="$ctrl.advertisement.content"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <label for="files"> Title  </label>
-                <input multiple file-upload="picFiles" name="files" id="files"  type="file" ng-model="$ctrl.pictures" ng-change="$ctrl.write()">
+                <label class=""> Attachments </label>
+                <input multiple file-upload="src/main/resources/static/js/directive/File.directive.jspicFiles" name="files" id="files"  type="file" ng-model="$ctrl.pictures" ng-change="$ctrl.write()">
                 <p class="help-block">MAX 25Mb</p>
-                <span class="error" ng-show="files.$error.filesToBig">Pliki są za duże </span>
+                <span class=" help-block error" ng-show="files.$error.filesToBig">Pliki są za duże </span>
             </div>
         </div>
         <div class="row">
-            <div class="form-group">
-                <label>Categories</label>
-
-                <div class="checkbox" id="category" ng-repeat=" category in $ctrl.categories" >
-                    <label>
-                    <input type="checkbox" ng-change="$ctrl.addRemoveCategory(category)" ng-model="$ctrl.advertisement.categories[category]">{{ category}}
+            <div class="form-group"  >
+                <label>Categories <div class="glyphicon glyphicon-asterisk asterisk"></div></label>
+                <div class="categories">
+                    <label  id="categories" class="checkbox" ng-repeat=" category in $ctrl.categories" >
+                    <input type="checkbox"
+                           name="categories"
+                           ng-change="$ctrl.addRemoveCategory(category)"
+                           ng-model="$ctrl.advertisement.categories[category]"
+                           required>
+                        {{ category}}
                     </label>
                 </div>
+                <span class="help-block error" ng-if="$ctrl.advertisement.categories.length==0 && advertisement.categories.$touched">Required</span>
 
             </div>
         </div>
         <div class="row">
-            <div class="form-group ">
-                <label>Type</label>
+            <div class="form-group " >
+                <label>Type <div class="glyphicon glyphicon-asterisk asterisk"></div></label>
+                <div class="help-block error" ng-if="advertisement.type.$touched" >Required</div>
+
                 <div class="radio">
                     <label>
-                        <input type="radio" value="BUYING" ng-model="$ctrl.advertisement.type">BUYING</br>
+                        <input type="radio" name="type" value="BUYING" ng-model="$ctrl.advertisement.type" required>BUYING</br>
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" value="SALE" ng-model="$ctrl.advertisement.type">SALE</br>
+                        <input type="radio" name="type" value="SALE" ng-model="$ctrl.advertisement.type" required>SALE</br>
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" value="EXCHANGE" ng-model="$ctrl.advertisement.type">EXCHANGE</br>
+                        <input type="radio" name="type" value="EXCHANGE" ng-model="$ctrl.advertisement.type" required>EXCHANGE</br>
                     </label>
                 </div>
             </div>
         </div>
     </form>
     <div class="content-footer">
-    <button  type="submit" class="btn  blue-button" ng-click="$ctrl.save()">SAVE</button>
+    <button  type="submit" class="btn  blue-button" ng-click="$ctrl.save()" ng-disabled="advertisement.$invalid && $ctrl.advertisement.categories.length==0">SAVE</button>
     </div>
 </div>

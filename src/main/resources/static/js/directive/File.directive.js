@@ -16,17 +16,13 @@ App.directive('fileUpload', ['$parse', function ($parse) {
                 }, 0);
 
                 if (size > 10485760) {
-                    console.log("Bigger");
-
                     ngModel.$setValidity('filesToBig', false);
-                }else{
-                    console.log("Not Bigger");
-
+                } else {
                     ngModel.$setValidity('filesToBig', true);
                     ngModel.$setViewValue(element[0].files)
                 }
             })
         }
     }
-    
+
 }])

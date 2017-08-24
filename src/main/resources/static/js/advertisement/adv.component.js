@@ -10,10 +10,13 @@ angular.module('adv').component('adv', {
         function AdvController($scope, Advertisement, $window, $uibModal) {
             var self = this;
             self.advertisement = {};
+            self.advertisement.type = "";
+
             self.advertisement.categories = [];
             self.pictures = [];
             self.categories = ['MOTO', 'PET', 'MAN', 'WOMAN', 'CLOTHES', 'JEWELLERY', 'HOME'];
-
+            self.globalError = false;
+            self.errorMessage = "";
 
             self.save = function () {
                 var parameters = new FormData();
@@ -49,18 +52,34 @@ angular.module('adv').component('adv', {
                     self.pictures = [];
 
                 }, function (res) {
-                    console.log(res);
+                    self.globalError = true;
+                    self.errorMessage = res;
                 })
             };
 
             self.addRemoveCategory = function (category) {
                 var index = self.advertisement.categories.indexOf(category);
-                if (index !== -1) {
-                    self.advertisement.categories.splice(index, 1);
+
+                if(!$scope.advertisement.categories.$touched)
+                    $scope.advertisement.categories.$touched=true;
+
+                if (index > -1) {
+                    //todo but why???
+                    if (self.advertisement.categories.length == 1) {
+                        self.advertisement.categories = [];
+                    } else {
+                        self.advertisement.categories.splice(index, 1);
+                    }
                 } else {
                     self.advertisement.categories.push(category);
                 }
             };
+
+            self.someCategorySelected = function (object) {
+                return Object.keys(object).some(function (key) {
+                    return object[key];
+                });
+            }
         }],
     bindings: {
         ngModel: '=',
