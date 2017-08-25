@@ -24,12 +24,23 @@
             <div ng-repeat="adv in $ctrl.listAdv | filter:$ctrl.search" class="col-xs-6 col-lg-4">
                 <div class=" advertisement">
                     <h2><a href="#!/adv/detail/{{ adv.id }}">{{ adv.title}}</a></h2>
-                    <span>{{ adv.content}}</span>
-                    <div>
+                    <div class="bar"></div>
+
+                    <div class="adv-content-small">
+                        <span>{{ adv.content | limitTo: 130}}</span>
+                    </div>
+                    <div class="bar"></div>
+
+                    <div class="adv-footer">
                         <span>
                             <b>{{ adv.type }}</b>
                         </span>
+                        <div class="categories-small">
+                            <span ng-repeat="cat in adv.categories" class="{{cat}} ico inline content-footer small-category" >
+                            </span>
+                        </div>
                     </div>
+
                 </div>
             </div>
 

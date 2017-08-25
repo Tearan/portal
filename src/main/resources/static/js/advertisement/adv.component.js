@@ -53,7 +53,7 @@ angular.module('adv').component('adv', {
 
                 }, function (res) {
                     self.globalError = true;
-                    self.errorMessage = res;
+                    self.errorMessage = res.message;
                 })
             };
 

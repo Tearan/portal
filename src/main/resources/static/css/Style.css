@@ -7,7 +7,7 @@ body{
    font-family: 'Catamaran', sans-serif !important;
 }
 .bar{
-   margin: 20px 10px;
+   margin: 20px 0px;
    border: 1px solid lightgrey;
 }
 .top-nav{
@@ -166,50 +166,48 @@ li{
 .advertisement{
    box-shadow: 5px 5px 5px #9d9d9d;
    background-color: white;
+   padding: 15px 20px;
+   margin: 10px;
 
 }
-
+.adv-content-small{
+   margin: 10px 5px;
+}
 .MOTO{
    background: url("ico/motorbike-side-view.svg") no-repeat top left;
    background-size: contain;
-   width: 40px;
-   height: 40px;
+
 }
 .PET{
    background: url("ico/pawprint.svg") no-repeat top left;
    background-size: contain;
-   width: 40px;
-   height: 40px;
+
 }
 .MAN{
    background: url("ico/man.svg") no-repeat top left;
    background-size: contain;
-   width: 40px;
-   height: 40px;
+
 }
 .WOMAN{
    background: url("ico/woman.svg") no-repeat top left;
-   width: 40px;
-   height: 40px;
+
 }
 .CLOTHES{
    background: url("ico/shirt.svg") no-repeat top left;
    background-size: contain;
-   width: 40px;
-   height: 40px;
+
 }
 .JEWELLERY{
    background: url("ico/diamond.svg") no-repeat top left;
    background-size: contain;
-   width: 40px;
-   height: 40px;
+
 }
 .HOME{
    background: url("ico/home.svg") no-repeat top left;
    background-size: contain;
-   width: 40px;
-   height: 40px;
+
 }
+
 
 .ico{
    margin: 0px 10px;
@@ -231,6 +229,11 @@ li{
    padding-left: 20px;
 }
 
+.categories-small{
+   position: absolute;
+   right: 35px;
+}
+
 /*errors*/
 .error{
    color: darkred !important;
@@ -239,4 +242,14 @@ li{
 .asterisk{
    color: darkred !important;
    font-size: 70%;
+}
+.small-category{
+   width: 20px;
+   height: 20px;
+
+}
+.category{
+   width: 40px;
+   height: 40px;
+
 }
