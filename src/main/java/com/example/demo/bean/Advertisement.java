@@ -37,6 +37,8 @@ public class Advertisement {
 
     private String authorId;
 
+    @Lob
+    @Column(columnDefinition="TEXT")
     private String content;
 
     private String title;
