@@ -1,6 +1,5 @@
 package com.example.demo.bean;
 
-import com.example.demo.bean.Attachment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;

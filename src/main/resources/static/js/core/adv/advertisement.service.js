@@ -8,8 +8,8 @@ angular.
 module('Advertisement').
 factory('Advertisement', ['$resource', '$http',
     function($resource, $http) {
-        var Advertisement =  $resource('adv/:owner/:id', {
-            owner: "@owner",
+        var Advertisement =  $resource('adv/:author/:id', {
+            author: "@author",
             id: "@id"
         }, {
             'update': {
@@ -22,6 +22,10 @@ factory('Advertisement', ['$resource', '$http',
             query:{
                 method : 'GET',
                 isArray: false
+            },
+            post:{
+                method : 'POST',
+                isArray: false
             }
         });
 
@@ -31,7 +35,6 @@ factory('Advertisement', ['$resource', '$http',
                 url: "/adv",
                 method: "POST",
                 data: fd,
-                // transformRequest: angular.identity,
                 headers: {
                     'Content-Type': undefined
                 },
@@ -42,35 +45,56 @@ factory('Advertisement', ['$resource', '$http',
 
         Advertisement.getByAuthor = function(author_id){
             return Advertisement.get({
-                owner: "author",
+                author: "me",
                 id: author_id
             })
         };
 
         Advertisement.getAll = function(){
             return Advertisement.get({
-                owner: "all"
+                author: "all"
             })
         };
 
         Advertisement.getStatuses = function(){
             return Advertisement.get({
-                owner: "statuses"
+                author: "statuses"
             })
         };
 
         Advertisement.getTypes = function(){
             return Advertisement.get({
-                owner: "types"
+                author: "types"
             })
         };
 
         Advertisement.getDetail = function(id){
             return Advertisement.query({
-                owner: "detail",
+                author: "detail",
                 id: id
             })
         };
+
+        Advertisement.addToWatch = function (id) {
+            return Advertisement.post({
+                author: "watch",
+                id: id
+            })
+        }
+
+        Advertisement.removeWatch = function (id) {
+            return Advertisement.post({
+                author: "unwatch",
+                id: id
+            })
+        }
+
+        Advertisement.iWatchThis = function (id) {
+            return Advertisement.query({
+                author: "watched",
+                id: id
+            })
+        }
 
         return Advertisement;
     }

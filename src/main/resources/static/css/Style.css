@@ -253,3 +253,7 @@ li{
    height: 40px;
 
 }
+.watch{
+   position: absolute;
+   right: 50px;
+}

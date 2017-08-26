@@ -15,4 +15,5 @@ import javax.transaction.Transactional;
 @Transactional
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByEmail(@Param("email") String email);
+    User findById(@Param("id") Long email);
 }

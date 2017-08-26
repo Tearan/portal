@@ -3,6 +3,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -53,4 +54,12 @@ public class User {
     )
     private List<Role> roles;
 
+    @ManyToMany( fetch = FetchType.LAZY)
+    @JoinTable(name="User_Watched_Ad",
+            joinColumns=
+            @JoinColumn(name="User_id", referencedColumnName="id"),
+            inverseJoinColumns=
+            @JoinColumn(name="Advertisement_id", referencedColumnName="id")
+    )
+    private List<Advertisement> listWatchedAdvertisements = new ArrayList<>();
 }

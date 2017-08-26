@@ -2,10 +2,12 @@ package com.example.demo.rest;
 
 import com.example.demo.bean.Advertisement;
 import com.example.demo.bean.Attachment;
+import com.example.demo.bean.User;
 import com.example.demo.repository.AdvertisementRepository;
 import com.example.demo.repository.AttachmentRepository;
 import com.example.demo.service.AdvertisementService;
 import com.example.demo.service.AttachmentService;
+import com.example.demo.service.UserService;
 import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,8 @@ public class AdvertisementController {
 
     @Autowired
     private AttachmentService attachmentService;
+    @Autowired
+    private UserService userService;
 
 
     @RequestMapping( method = RequestMethod.POST, consumes = {"application/octet-stream", "multipart/mixed", "multipart/form-data" })
@@ -53,10 +57,11 @@ public class AdvertisementController {
         return ResponseEntity.ok(savedAdv);
     }
 
-    @RequestMapping(value = "/author/{id}", method = RequestMethod.GET)
+    //todo remove id
+    @RequestMapping(value = "/me/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Advertisement>> getAdvertisements(@PathVariable("id") String condition){
         LOG.info("getAdvertisements for userId: "+condition);
-        List<Advertisement> list = advertisementService.findByAuthor(condition);
+        List<Advertisement> list = advertisementRepository.findByAuthorId(condition);
         return ResponseEntity.ok(list);
     }
 
@@ -89,9 +94,30 @@ public class AdvertisementController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Advertisement>> getAll(){
-        List<Advertisement> adv = advertisementService.getAll();
+        List<Advertisement> adv = advertisementRepository.findAll();
         return ResponseEntity.ok(adv);
     }
 
 
+    @RequestMapping(value = "/watch/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> addWatch(@PathVariable("id") String id){
+        Long currentUserId = userService.getCurrentUser().getId();
+        advertisementService.addWatch(Long.parseLong(id), currentUserId);
+        return ResponseEntity.ok("{}");
+    }
+
+    @RequestMapping(value = "/unwatch/{id}", method = RequestMethod.POST)
+    public ResponseEntity<?> unwatch(@PathVariable("id") String id){
+        Long currentUserId = userService.getCurrentUser().getId();
+        advertisementService.removeWatch(Long.parseLong(id), currentUserId);
+        return ResponseEntity.ok("{}");
+    }
+
+    @RequestMapping(value = "/watched/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> iWatchThis(@PathVariable("id") String id){
+        IWatchResponse response = new IWatchResponse();
+        Long currentUserId = userService.getCurrentUser().getId();
+        response.setResult(advertisementService.userWatchThis(Long.parseLong(id), currentUserId));
+        return ResponseEntity.ok(response);
+    }
 }

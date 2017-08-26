@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.bean.Attachment;
 import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ import java.util.stream.Stream;
 @Log4j
 public class AttachmentService {
 
-    private static Logger LOG = Logger.getLogger(AdvertisementService.class);
+    private static Logger LOG = Logger.getLogger(AttachmentService.class);
 
     private static final String UPLOAD_ATTACHMENT_PATH = "src/main/resources/static/attachments/";
 

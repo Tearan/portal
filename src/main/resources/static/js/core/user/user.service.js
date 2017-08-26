@@ -17,9 +17,12 @@ factory('User', ['$resource',
         });
 
         User.getCurrentUser = function(){
-            return User.query({
-                condition: "current"
-            })
+            if(!self.currentUser) {
+                self.currentUser = User.query({
+                    condition: "current"
+                });
+            }
+            return self.currentUser;
         };
 
         return User;

@@ -4,6 +4,9 @@ import com.example.demo.bean.Advertisement;
 import com.example.demo.bean.Attachment;
 import com.example.demo.bean.User;
 import com.example.demo.repository.AdvertisementRepository;
+import com.example.demo.repository.UserRepository;
+import groovy.util.logging.Log4j;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,11 +15,15 @@ import java.io.*;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Created by marta on 28.07.17.
  */
 @Component
+@Log4j
 public class AdvertisementService {
+
+    private static Logger LOG = Logger.getLogger(AdvertisementService.class);
 
     @Autowired
     private AdvertisementRepository advRepository;
@@ -26,6 +33,9 @@ public class AdvertisementService {
 
     @Autowired
     private AttachmentService attachmentService;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     public Advertisement addAdvertisement(Advertisement advertisement, List<MultipartFile> files){
@@ -49,11 +59,27 @@ public class AdvertisementService {
         return createdAdv;
     }
 
-    public List<Advertisement> findByAuthor(String condition){
-        return advRepository.findByAuthorId(condition);
+    public void addWatch(Long idAdv, Long userId) {
+        User user = userRepository.findById(userId);
+        List<Advertisement> lis = user.getListWatchedAdvertisements();
+        lis.add(advRepository.findById(idAdv));
+
+        userRepository.save(user);
     }
 
-    public List<Advertisement> getAll(){
-        return advRepository.findAll();
+    public void removeWatch(Long idAdv, Long userId) {
+        User user = userRepository.findById(userId);
+        List<Advertisement> lis = user.getListWatchedAdvertisements();
+        lis.remove(advRepository.findById(idAdv));
+
+        userRepository.save(user);
+    }
+
+    public boolean userWatchThis(Long adId, Long userId) {
+        User user = userRepository.findById(userId);
+        Advertisement searchedAd = advRepository.findById(adId);
+        List<Advertisement> lis = user.getListWatchedAdvertisements();
+
+        return lis.contains(searchedAd);
     }
 }
