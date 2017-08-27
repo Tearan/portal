@@ -1,10 +1,9 @@
-package com.example.demo.rest;
+package com.example.demo.rest.advertisement;
 
 import com.example.demo.bean.Advertisement;
 import com.example.demo.bean.Attachment;
-import com.example.demo.bean.User;
 import com.example.demo.repository.AdvertisementRepository;
-import com.example.demo.repository.AttachmentRepository;
+import com.example.demo.rest.IWatchResponse;
 import com.example.demo.service.AdvertisementService;
 import com.example.demo.service.AttachmentService;
 import com.example.demo.service.UserService;
@@ -12,14 +11,11 @@ import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

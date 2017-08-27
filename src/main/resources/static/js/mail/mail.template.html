@@ -1,0 +1,20 @@
+
+<div class="content">
+    <div class="mail-subject">
+        <button type="button" class="close">×</button>
+        <h3>Compose Email</h3>
+    </div>
+    <div class="mail-content">
+        <form>
+            <input type="text" placeholder="To" style="width:95%;" ng-model="$ctrl.mail.to"><br />
+            <input type="text" placeholder="From" style="width:95%;" ng-model="$ctrl.mail.from"><br />
+            <input type="text" placeholder="Subject" style="width:95%;" ng-model="$ctrl.mail.subject"><br />
+            <textarea style="width:95%;" rows="10" ng-model="$ctrl.mail.content"></textarea>
+        </form>
+    </div>
+
+    <div class="adv-footer">
+        <a class="btn">Close</a>
+        <a class="btn btn-primary" ng-click="$ctrl.sandEmail()">Send</a>
+    </div>
+</div>

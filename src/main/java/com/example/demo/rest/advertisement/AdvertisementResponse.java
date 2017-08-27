@@ -1,4 +1,4 @@
-package com.example.demo.rest;
+package com.example.demo.rest.advertisement;
 
 import com.example.demo.bean.Advertisement;
 import lombok.Getter;

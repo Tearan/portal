@@ -4,7 +4,7 @@
 
 angular.module("advdetail").component("advdetail", {
     templateUrl: '/js/advdetail/advdetail.template.html',
-    controller:  [ 'Advertisement', '$route', function AdvDetailController(Advertisement, $route) {
+    controller:  [ 'Advertisement', '$route','$uibModal', function AdvDetailController(Advertisement, $route, $uibModal) {
         var self = this;
         self.iWatchThis = false;
 
@@ -28,6 +28,19 @@ angular.module("advdetail").component("advdetail", {
             });
         }
 
+        self.openEmailModal = function () {
+
+
+            var modal = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                size: 'sm',
+                component: 'mail',
+                controllerAs: '$ctrl',
+                resolve: {}
+            })
+        }
 
         this.$onInit = function () {
             Advertisement.getDetail($route.current.params.id).$promise.then(function (result) {

@@ -6,5 +6,6 @@
 
 angular.module('adv', [
     'ui.bootstrap',
-    'adsuccess'
+    'adsuccess',
+    'mail'
 ])
