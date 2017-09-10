@@ -3,7 +3,6 @@ package com.example.demo.rest.advertisement;
 import com.example.demo.bean.Advertisement;
 import com.example.demo.bean.Attachment;
 import com.example.demo.repository.AdvertisementRepository;
-import com.example.demo.rest.IWatchResponse;
 import com.example.demo.service.AdvertisementService;
 import com.example.demo.service.AttachmentService;
 import com.example.demo.service.UserService;

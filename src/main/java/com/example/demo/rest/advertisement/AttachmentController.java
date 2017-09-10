@@ -1,4 +1,4 @@
-package com.example.demo.rest;
+package com.example.demo.rest.advertisement;
 
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 

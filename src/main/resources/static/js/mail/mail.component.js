@@ -1,6 +1,7 @@
 /**
  * Created by marta on 14.08.17.
  */
+'use strict';
 
 angular.module("mail").component("mail", {
     templateUrl: '/js/mail/mail.template.html',
