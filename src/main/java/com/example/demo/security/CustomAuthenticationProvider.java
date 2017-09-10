@@ -8,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,17 +20,16 @@ import java.util.List;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Autowired
-    private UserRepository userRepository;
-
+    private UserAuthenticator authenticator;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        User user = userRepository.findByEmail(name);
+        User user = authenticator.authenticate(name, password);
 
-        if (user != null) {
+        if (user != null ) {
             List<Role> authorities = user.getRoles();
             return new UsernamePasswordAuthenticationToken(
                     name, password, authorities);

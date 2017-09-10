@@ -27,13 +27,9 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth, CustomAuthenticationProvider authenticationProvider) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth,
+                                CustomAuthenticationProvider authenticationProvider) throws Exception {
         auth.authenticationProvider(authenticationProvider);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     @Override

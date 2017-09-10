@@ -21,7 +21,7 @@ angular.module("users").component("users", {
             self.addFriend = function (id) {
                 console.log(id);
                 User.addFriend(id);
-            }
+            };
         }
     ]
 

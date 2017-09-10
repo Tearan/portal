@@ -1,5 +1,6 @@
 package com.example.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @NotNull
@@ -46,7 +48,7 @@ public class User {
 
     private String token;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)//TODO na pewno EAGER?
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "User_Role",
             joinColumns =
             @JoinColumn(name = "User_id", referencedColumnName = "id"),
@@ -64,6 +66,7 @@ public class User {
     )
     private List<Advertisement> listWatchedAdvertisements = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "User_Friend",
             joinColumns =

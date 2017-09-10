@@ -25,7 +25,7 @@ public class RegistrationController {
     private static final Logger LOG = Logger.getLogger(RegistrationController.class);
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private RegistrationValidator validator;
@@ -41,11 +41,12 @@ public class RegistrationController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String userRegistration(Registration registration, Model model, BindingResult errors,
                                    RedirectAttributes redirectAttributes){
-        LOG.info(registration);
+
         validator.validate(registration, errors);
 
         if(errors.hasErrors()){
             redirectAttributes.addFlashAttribute("warn", "Errors occurred");
+            LOG.error(errors.getAllErrors());
             return "register";
         }else{
             userService.createUser(registration.getUser(), registration.getPassword());

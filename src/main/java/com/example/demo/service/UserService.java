@@ -7,18 +7,18 @@ import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 /**
  * Created by marta on 08.07.17.
  */
-@Component
+@Service
 public class UserService {
 
     @Autowired
-    private UserRepository repository;
+    private UserRepository userRepository;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -26,8 +26,6 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UserRepository userRepository;
 
     public User createUser(User user, String password ){
         user.setPasswordHash(passwordEncoder.encode(password));
@@ -36,7 +34,7 @@ public class UserService {
         Role newRole = roleRepository.getByName("USER");
         roles.add(newRole);
         user.setRoles(roles);
-        repository.save(user);
+        userRepository.save(user);
         //TODO add notifier
         return user;
     }
@@ -49,7 +47,7 @@ public class UserService {
 
     public User addFriendToUser(User user,Long friendId){
         user.getFriends().add(userRepository.findById(friendId));
-        return repository.save(user);
+        return userRepository.save(user);
     }
 
 }
