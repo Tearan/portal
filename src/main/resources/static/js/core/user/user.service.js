@@ -13,6 +13,9 @@ factory('User', ['$resource',
         }, {
             query:{
                 isArray: false
+            },
+            get:{
+                isArray: true
             }
         });
 
@@ -24,6 +27,13 @@ factory('User', ['$resource',
             }
             return self.currentUser;
         };
+
+
+        User.getAllUsers = function () {
+            return User.get({
+                condition: "all"
+            });
+        }
 
         return User;
     }

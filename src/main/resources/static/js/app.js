@@ -12,7 +12,8 @@ var App = angular.module('portal',[
     'Advertisement',
     'core.user',
     'advdetail',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'users'
 
 
     //uib modals
