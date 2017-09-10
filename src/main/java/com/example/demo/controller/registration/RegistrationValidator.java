@@ -19,12 +19,19 @@ public class RegistrationValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "Registration.first.name.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "Registration.last.name.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthday", "Registration.birthday.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Registration.email.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Registration.password.empty");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwordConfirmation", "Registration.password.confirmation.empty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "registration.required.field");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "registration.required.field");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthday", "registration.required.field");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "registration.required.field");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "registration.required.field");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwordConfirmation", "registration.required.fieldy");
+
+        Registration registration = (Registration) o;
+
+        if(registration.getEmail() != null){
+
+        }
+
 
 
     }
