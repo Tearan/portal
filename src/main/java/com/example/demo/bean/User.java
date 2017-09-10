@@ -1,4 +1,5 @@
 package com.example.demo.bean;
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +17,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class User {
 
-    public enum Status{
+    public enum Status {
         WAITING_CONFIRMATION, ACTIVE
     }
 
@@ -45,21 +46,30 @@ public class User {
 
     private String token;
 
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)//TODO na pewno EAGER?
-    @JoinTable(name="User_Role",
-            joinColumns=
-            @JoinColumn(name="User_id", referencedColumnName="id"),
-            inverseJoinColumns=
-            @JoinColumn(name="Role_id", referencedColumnName="id")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)//TODO na pewno EAGER?
+    @JoinTable(name = "User_Role",
+            joinColumns =
+            @JoinColumn(name = "User_id", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "Role_id", referencedColumnName = "id")
     )
     private List<Role> roles;
 
-    @ManyToMany( fetch = FetchType.LAZY)
-    @JoinTable(name="User_Watched_Ad",
-            joinColumns=
-            @JoinColumn(name="User_id", referencedColumnName="id"),
-            inverseJoinColumns=
-            @JoinColumn(name="Advertisement_id", referencedColumnName="id")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "User_Watched_Ad",
+            joinColumns =
+            @JoinColumn(name = "User_id", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "Advertisement_id", referencedColumnName = "id")
     )
     private List<Advertisement> listWatchedAdvertisements = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "User_Friend",
+            joinColumns =
+            @JoinColumn(name = "User_id", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "User_Friend_id", referencedColumnName = "id")
+    )
+    private List<User> friends = new ArrayList<>();
 }

@@ -46,4 +46,10 @@ public class UserService {
         User currentUser = userRepository.findByEmail(email);
         return currentUser;
     }
+
+    public User addFriendToUser(User user,Long friendId){
+        user.getFriends().add(userRepository.findById(friendId));
+        return repository.save(user);
+    }
+
 }

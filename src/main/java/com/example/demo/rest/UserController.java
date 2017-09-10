@@ -35,6 +35,13 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
+    @RequestMapping(value = "/user/add", method = RequestMethod.POST)
+    public void addUserFriend( @RequestParam("id") String friendId){
+        User currentUser = userService.getCurrentUser();
+        User friend = userService.addFriendToUser(currentUser, Long.parseLong(friendId));
+        LOG.info(friend);
+    }
+
 
     @RequestMapping(value = "/user/current", method = RequestMethod.GET)
     public ResponseEntity<User> getCurrentUser(){

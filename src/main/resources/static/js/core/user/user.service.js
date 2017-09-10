@@ -16,7 +16,11 @@ factory('User', ['$resource',
             },
             get:{
                 isArray: true
+            },
+            post:{
+                method: 'POST'
             }
+
         });
 
         User.getCurrentUser = function(){
@@ -34,6 +38,14 @@ factory('User', ['$resource',
                 condition: "all"
             });
         }
+
+        User.addFriend = function (id) {
+            return User.post({'id': id},{
+                condition: "add"
+            });
+        }
+
+
 
         return User;
     }

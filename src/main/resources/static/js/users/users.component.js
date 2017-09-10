@@ -17,6 +17,11 @@ angular.module("users").component("users", {
             self.maxSize = 4;
 
             console.log(self.usersLength);
+
+            self.addFriend = function (id) {
+                console.log(id);
+                User.addFriend(id);
+            }
         }
     ]
 
