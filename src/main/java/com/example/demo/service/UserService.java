@@ -27,7 +27,7 @@ public class UserService {
 
     public User createUser(User user, String password ){
         user.setPasswordHash(passwordEncoder.encode(password));
-        user.setStatus(User.Status.NEW);
+        user.setStatus(User.Status.WAITING_CONFIRMATION);
         ArrayList roles = new ArrayList();
         Role newRole = roleRepository.getByName("USER");
         roles.add(newRole);
