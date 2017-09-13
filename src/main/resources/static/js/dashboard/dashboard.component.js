@@ -15,7 +15,8 @@ angular.module('dashboard').component( 'dashboard',{
         self.statuses = [];
         self.types = [];
         self.currentUser = User.getCurrentUser();
-
+        self.categories = Advertisement.getCategories();
+        self.types = Advertisement.getTypes();
         self.currentUser.$promise.then(function success(response) {
 
             Advertisement.getByAuthor(response.id).$promise.then(function (res) {
@@ -23,10 +24,11 @@ angular.module('dashboard').component( 'dashboard',{
             })
         });
 
-        Advertisement.getTypes().$promise.then(function (res) {
-            console.log(res);
-            self.types = _.toArray(res);
-        })
+        // Advertisement.getTypes().$promise.then(function (res) {
+        //     console.log(res);
+        //     self.types = _.toArray(res);
+        // })
+
 
     }]
 });

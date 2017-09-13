@@ -17,6 +17,13 @@
                 <option ng-repeat="type in $ctrl.types " value="{{type}}">{{ type }} </option>
             </select>
         </div>
+        <div class="inline">
+            <span>Search by CATEGORY</span>
+            <select  ng-model="$ctrl.search.category" >
+                <option value="">All</option>
+                <option ng-repeat="type in $ctrl.categories " value="{{type}}">{{ type }} </option>
+            </select>
+        </div>
     </div>
     <div class="bar"></div><!--ToDo do zmiany -->
     <div class="">

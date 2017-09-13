@@ -68,6 +68,10 @@ factory('Advertisement', ['$resource', '$http',
             })
         };
 
+        Advertisement.getCategories = function(){
+            return ['MOTO', 'PET', 'MAN', 'WOMAN', 'CLOTHES', 'JEWELLERY', 'HOME'];
+        };
+
         Advertisement.getDetail = function(id){
             return Advertisement.query({
                 author: "detail",

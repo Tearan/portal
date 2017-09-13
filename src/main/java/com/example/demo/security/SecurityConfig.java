@@ -26,6 +26,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         return new CustomAuthenticationProvider();
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth,
                                 CustomAuthenticationProvider authenticationProvider) throws Exception {
@@ -36,14 +42,13 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/css/**", "/img/**", "/js/**", "/fonts/**",
-                        "/register", "/users/confirm", "/attachments/**")
+                        "/register", "/attachments/**")
                     .permitAll()
                 .anyRequest()
                     .authenticated();
 
                 http.formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/")
                     .permitAll()
                     .and()
                 .logout()

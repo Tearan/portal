@@ -3,4 +3,4 @@
  */
 'use_strict';
 
-angular.module("customheader", []);
+angular.module("customheader", ['core.user']);

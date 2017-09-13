@@ -6,12 +6,9 @@
 
 angular.module('customheader').component('customheader', {
     templateUrl: '/js/customheader/customheader.template.html',
-    controller:  ['$scope',function HeaderController($scope) {
-
-        }],
-    bindings: {
-        ngModel: '=',
-        options: '=',
-        metricId: '@'
-    }
+    controller:  ['User',function HeaderController(User) {
+            var self = this;
+            self.loggedUser = User.getCurrentUser();
+            console.log(self.loggedUser);
+        }]
 });
