@@ -5,4 +5,4 @@
 'use strict';
 
 angular.
-module('Advertisement',['ngResource'])
+module('core.adv',['ngResource'])

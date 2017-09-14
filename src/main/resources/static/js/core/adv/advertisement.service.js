@@ -5,7 +5,7 @@
 'use strict';
 
 angular.
-module('Advertisement').
+module('core.adv').
 factory('Advertisement', ['$resource', '$http',
     function($resource, $http) {
         var Advertisement =  $resource('adv/:author/:id', {

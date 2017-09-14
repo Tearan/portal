@@ -7,5 +7,6 @@
 angular.module('adv', [
     'ui.bootstrap',
     'adsuccess',
-    'mail'
+    'mail',
+    'core.adv'
 ])
