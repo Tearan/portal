@@ -8,6 +8,7 @@ import com.example.demo.repository.UserRepository;
 import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,7 +48,7 @@ public class AdvertisementService {
 
         files.stream().forEach(file -> {
             try {
-                Attachment newAttachment = new Attachment(file.getOriginalFilename().replace(" ", "-"));
+                Attachment newAttachment = new Attachment(file.getOriginalFilename().replaceAll("[ _]", "-"));
                 advertisement.addAttachment(newAttachment);
             } catch (IOException e) {
                 e.printStackTrace();

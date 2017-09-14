@@ -1,14 +1,13 @@
 package com.example.demo.rest.advertisement;
 
 import com.example.demo.bean.Advertisement;
-import com.example.demo.bean.Attachment;
 import com.example.demo.repository.AdvertisementRepository;
 import com.example.demo.service.AdvertisementService;
-import com.example.demo.service.AttachmentService;
 import com.example.demo.service.UserService;
 import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +36,11 @@ public class AdvertisementController {
     private AdvertisementRepository advertisementRepository;
 
     @Autowired
-    private AttachmentService attachmentService;
-    @Autowired
     private UserService userService;
+
+    //todo not in this place!
+    @Value("${attachments.link.base}")
+    private  String uploadAttachmentLink;
 
 
     @RequestMapping( method = RequestMethod.POST, consumes = {"application/octet-stream", "multipart/mixed", "multipart/form-data" })
@@ -72,7 +73,7 @@ public class AdvertisementController {
         response.setAdvertisement(advertisement);
         List<String> listFilesName = advertisement.getPictures()
                 .stream()
-                .map(Attachment::getName)
+                .map(a-> uploadAttachmentLink+advertisement.getId()+"/"+a.getName())
                 .collect(Collectors.toList());
 
         //todo change!!!!!!

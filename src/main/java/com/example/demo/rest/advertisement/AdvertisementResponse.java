@@ -4,8 +4,6 @@ import com.example.demo.bean.Advertisement;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.File;
-import java.io.OutputStream;
 import java.util.List;
 
 /**

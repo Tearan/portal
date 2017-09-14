@@ -1,8 +1,8 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.Attachment;
 import groovy.util.logging.Log4j;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,20 +24,21 @@ public class AttachmentService {
 
     private static Logger LOG = Logger.getLogger(AttachmentService.class);
 
-    private static final String UPLOAD_ATTACHMENT_PATH = "src/main/resources/static/attachments/";
+    @Value("${attachments.path.base}")
+    private String uploadAttachmentPath;
 
 
 
     public void saveFileInDirectory(List<MultipartFile> file, String advId) {
         file.stream().forEach(f->{
 
-            Path newDirectoryPath = Paths.get(UPLOAD_ATTACHMENT_PATH+advId);
+            Path newDirectoryPath = Paths.get(uploadAttachmentPath +advId);
             InputStream is = null;
             OutputStream os = null;
             try{
                 is = f.getInputStream();
                 Files.createDirectories(newDirectoryPath);
-                Path newFilePath = Paths.get(newDirectoryPath+"/"+f.getOriginalFilename().replace(" ", "_"));
+                Path newFilePath = Paths.get(newDirectoryPath+"/"+f.getOriginalFilename().replaceAll("[ _]", "-"));
                 Files.createFile(newFilePath);
                 os = new FileOutputStream(newFilePath.toString());
                 int read = 0;
@@ -53,11 +54,10 @@ public class AttachmentService {
         });
     }
 
-
     public List<File> getFiles(List<String> files, String advId) {
         List<File> listFiles = new ArrayList<>();
 
-        try(Stream<Path> stream = Files.list(Paths.get(UPLOAD_ATTACHMENT_PATH+advId))){
+        try(Stream<Path> stream = Files.list(Paths.get(uploadAttachmentPath +advId))){
             listFiles = stream
                     .map(f-> new File(f.toString()))
                     .collect(Collectors.toList());
