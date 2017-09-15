@@ -38,7 +38,7 @@ public class RegistrationController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String userRegistration(Registration registration, Model model, BindingResult errors,
                                    RedirectAttributes redirectAttributes){
-
+        LOG.info(registration);
         validator.validate(registration, errors);
 
         if(errors.hasErrors()){
